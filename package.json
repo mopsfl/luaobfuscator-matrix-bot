@@ -1,0 +1,24 @@
+{
+    "main": "dist/index.js",
+    "dependencies": {
+        "dotenv": "^16.3.1",
+        "nodemon": "^3.1.10"
+    },
+    "scripts": {
+        "build": "rimraf dist && npx tsc && esbuild dist/index.js --platform=node --outdir=./dist --allow-overwrite --minify",
+        "prestart": "npm run build",
+        "start": "node dist/index.js prod",
+        "preserve": "npm run build",
+        "serve": "ts-node-dev --respawn --transpile-only index.ts",
+        "start_daki": "node ./dist/index.js"
+    },
+    "devDependencies": {
+        "@types/dotenv": "^8.2.0",
+        "@types/node": "^20.4.2",
+        "concurrently": "^8.2.0",
+        "esbuild": "^0.18.13",
+        "rimraf": "^5.0.1",
+        "ts-node-dev": "^2.0.0",
+        "typescript": "^5.1.6"
+    }
+}
